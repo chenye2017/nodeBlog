@@ -14,9 +14,9 @@ con.connect()
 function exec(sql, params) {
     return new Promise((resolve, reject) => {
         try {
-         //   console.log('mysql')
+            console.log('mysql')
             con.query(sql, params, function(err, result) {
-                console.log(result)
+             //   console.log(result)
                 if (err) {
                     console.log('start111')
                     console.log(err.message)

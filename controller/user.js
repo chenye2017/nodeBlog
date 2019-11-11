@@ -16,14 +16,16 @@ function userRegister(req)
     password = md5(password)
   //  console.log(password, 1111)
   //  process.exit()
+ // console.log(userName)
     sql = 'select * from user where user_name = ? ';
-    let res = exec(sql, [userName])
-
+    let res1 = exec(sql, [userName])
    
+   // console.log(11222333)
 
-   let tmp1 =   res.then((obj) => {
+   let tmp1 =   res1.then((obj) => {
+       console.log(444)
         //return new Promise((resolve, reject) => {
-            console.log(1112)
+       /*      console.log(obj)
             if(obj) {
           //      reject({status: false, message: 'user_name 已存在', httpCode: 400})
           console.log(1112)
@@ -36,11 +38,11 @@ function userRegister(req)
                // console.log(111)
                  let res1 = exec(sql, [userName, password, getNowFormatDate()])
                   return res1      
-            }
+            } */
        // })
         
     })
-    return tmp1
+ //   return tmp1
 
     /* .then((obj) => {
         console.log(111)

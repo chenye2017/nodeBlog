@@ -3,7 +3,7 @@ const {getBlogList, addNewBlog, getBlogDetail, updateBlog, delBlog} = require(".
 function bRouter(req, res)
 {
 
-   console.log(req.path, req.method)
+ //  console.log(req.path, req.method)
    // 获取博客列表
     if (req.path === '/api/blog/list' && req.method === 'GET') {
        return  getBlogList(req.param.author, req.param.keyword)

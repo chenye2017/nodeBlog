@@ -1,6 +1,6 @@
 const { getNowFormatDate} = require('../commonFunc')
 const {exec, test}  = require('../db/mysql')
-const {SuccessModel} = require('../model/BaseModel')
+
 
 
 function getBlogList(author, keyword)
@@ -17,9 +17,13 @@ function getBlogList(author, keyword)
     }
     
     let res = exec(sql, params)
-   
+    
 
-    return res
+    return res.then((obj) => {
+        return new Promise((resolve, reject) => {
+            resolve({status:true, data: obj})
+        })
+    })
 }
 
 function getBlogDetail(id)

@@ -88,7 +88,7 @@ function handle (req,res)
 
 
     res.setHeader('Content-type', 'application/json')
-
+    
     // test 组装参数
     test(req,res).then((obj) => {
         req = obj.req
@@ -120,10 +120,12 @@ function handle (req,res)
 
        console.log(obj)
         let {status, data, message, code, httpCode} = obj
-        
+       
+
+
         result = new BaseModel(obj)
-        
-            
+       // console.log(obj)
+           
         if (typeof obj.status !== 'undefined') {
                
             if (obj.status === true) {
@@ -137,26 +139,22 @@ function handle (req,res)
                 //result = new ErrorModel(obj)
                 // return  // 还是只会暂停当前函数的执行
             }
+            console.log(111)
             res.statusCode = httpCode
             res.end(JSON.stringify(new BaseModel(obj)))
             return
         }
         res.writeHead(404, {'Content-type': 'text/html'})
         res.end('router not found1')
-
-       
-        
-      
-        
     }).catch((error) => {
-
+       console.log('error')
         console.log(error)
 
-        process.exit()
+    //    process.exit()
         if (error.status !== 'undefined') {
             let e = new BaseModel(error)
         } else {
-            console.log(error)
+            console.log(error.message)
         }
     })
   
